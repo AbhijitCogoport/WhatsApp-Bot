@@ -9,11 +9,11 @@ const Whatsapp = new WhatsappCloudAPI({
     WABA_ID: process.env.Meta_WA_wabaId,
 });
 
-const EcommerceStore = require('./../utils/ecommerce_store.js');
+const EcommerceStore = require('../utils/ecommerce_store.js');
 let Store = new EcommerceStore();
 const CustomerSession = new Map();
 
-router.get('/meta_wa_callbackurl', (req, res) => {
+router.get('/webhook', (req, res) => {
     try {
         console.log('GET: Someone is pinging me!');
 
@@ -37,7 +37,7 @@ router.get('/meta_wa_callbackurl', (req, res) => {
     }
 });
 
-router.post('/meta_wa_callbackurl', async (req, res) => {
+router.post('/webhook', async (req, res) => {
     console.log('POST: Someone is pinging me!');
     try {
         let data = Whatsapp.parseMessage(req.body);
