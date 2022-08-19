@@ -35,13 +35,12 @@ app.post("/webhook",(req,res)=>{ //i want some
 
     let body_param=req.body;
 
-    console.log("just for working " ,JSON.stringify(body_param,null,2));
+    console.log("jout side working " ,JSON.stringify(body_param,null,2));
 
     if(body_param?.object){
         console.log("inside body param");
         if(body_param?.entry && 
             body_param.entry[0].changes && 
-            body_param.entry[0].changes[0].value.message && 
             body_param.entry[0].changes[0].value.messages[0]  
             ){
                 console.log('deep layer')
