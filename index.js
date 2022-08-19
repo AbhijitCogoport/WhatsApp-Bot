@@ -35,7 +35,7 @@ app.post("/webhook",(req,res)=>{ //i want some
 
     let body_param=req.body;
 
-    console.log("jout side working " ,JSON.stringify(body_param,null,2));
+    console.log("out side working " ,JSON.stringify(body_param,null,2));
 
     if(body_param?.object){
         console.log("inside body param");
@@ -51,6 +51,7 @@ app.post("/webhook",(req,res)=>{ //i want some
                console.log("phone number "+phon_no_id);
                console.log("from "+from);
                console.log("boady param "+msg_body);
+               let setall=phon_no_id+from;
 
                axios({
                    method:"POST",
@@ -59,7 +60,7 @@ app.post("/webhook",(req,res)=>{ //i want some
                        messaging_product:"whatsapp",
                        to:from,
                        text:{
-                           body:"Hi.. I'm Prasath, your message is "+msg_body
+                           body:"Hi.. I'm Prasath, your message is "+msg_body+setall
                        }
                    },
                    headers:{
