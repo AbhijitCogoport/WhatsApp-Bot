@@ -8,11 +8,9 @@
   },
   "keywords": [
     "whatsapp",
-    "whatsapp",
-    "web",
-    "api",
-    "node",
-    "js"
+    "whatsapp-web-api",
+    "node-js",
+    "express-js"
   ],
   "author": "Abhijit Gayen",
   "license": "ISC",
