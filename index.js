@@ -121,7 +121,7 @@ app.post("/webhook", (req, res) => {
         let msg_btn = body_param.entry[0].changes[0].value.messages[0].interactive.type;
         if(msg_btn==="button_reply"){
             let msg_btn_id= body_param.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
-            console.log(body_param.entry[0].changes[0].value.messages);
+            // console.log(body_param.entry[0].changes[0].value.messages);
             if(msg_btn_id==="yes_well"){
                 axios({
                     method: "POST",
