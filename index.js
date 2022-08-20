@@ -132,70 +132,10 @@ app.post("/webhook", (req, res) => {
                         context: {
                             "message_id": msg_id
                         },
-                        type: "interactive",
-                        "interactive": {
-                            "type": "list",
-                            "header": {
-                                "type": "text",
-                                "text": "Cogoport"
-                            },
-                            "body": {
-                                "text": "Selectone of the services"
-                            },
-                            "footer": {
-                                "text": " cogoportBot"
-                            },
-                            "action": {
-                                "button": "Menu",
-                                "sections": [
-                                    {
-                                        "title": "Products",
-                                        "rows": [
-                                            {
-                                                "id": "search-freight_rates",
-                                                "title": "Search Freight Rates",
-                                                "description": "Freight charges & air cargo prices at your finger tips"
-                                            },
-                                            {
-                                                "id": "book_shipping_containers",
-                                                "title": " Book Shipping Containers",
-                                                "description": "Booking Shipping Containers Now"
-                                            },
-                                            {
-                                                "id": "book_air_shipments",
-                                                "title": "Book Air Shipments",
-                                                "description": "Booking air shipments Now"
-                                            },
-                                            {
-                                                "id": "track_containers",
-                                                "title": " Track Containers",
-                                                "description": "Track Containers Now"
-                                            }
-
-                                        ]
-                                    },
-                                    {
-                                        "title": "Services",
-                                        "rows": [
-                                            {
-                                                "id": "fcl_freight",
-                                                "title": "FCL Freight",
-                                                "description": "Talk to an FCL Expert"
-                                            },
-                                            {
-                                                "id": "lcl_freight",
-                                                "title": "LCL Freight",
-                                                "description": "Talk to an LCL Expert"
-                                            },
-                                            {
-                                                "id": "air_cargo",
-                                                "title": "Air Cargo",
-                                                "description": "Talk to an Expert"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
+                        type: "text",
+                        "text": {
+                            "preview_url": false,
+                            "body": "i am not able to understand fack . " + msg_id
                         }
                     },
                     headers: {
@@ -217,7 +157,7 @@ app.post("/webhook", (req, res) => {
                         type: "text",
                         "text": {
                             "preview_url": false,
-                            "body": " sorry for distrubing . if you about our product you can contact with us" +   msg_id
+                            "body": " sorry for distrubing . " +   msg_id
                         }
                     },
                     headers: {
