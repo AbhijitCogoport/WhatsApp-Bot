@@ -43,7 +43,7 @@ app.post("/webhook", (req, res) => {
 //   console.log("user data" ,JSON.stringify(body_param,null,2));
 
   if (body_param?.object) {
-    console.log("inside body param");
+    // console.log("inside body param");
     if (
       body_param.entry &&
       body_param.entry[0]?.changes &&
@@ -116,6 +116,7 @@ app.post("/webhook", (req, res) => {
         }
       }
       if(reply_type==='interactive'){
+        console.log("hello")
         axios({
             method: "POST",
             url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
@@ -125,7 +126,7 @@ app.post("/webhook", (req, res) => {
                 type: "text",
                 "text": {
                     "preview_url": false,
-                    "body": "i am not able to understand fack . "+msg_body
+                    "body": "i am not able to understand fack . "
                 }
             },
             headers: {
