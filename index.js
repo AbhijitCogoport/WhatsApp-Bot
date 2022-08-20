@@ -70,24 +70,30 @@ app.post("/webhook", (req, res) => {
                 messaging_product: "whatsapp",
                 recipient_type: "individual",
                 to: from,
-                type: "template",
-                "template": {
-                    "name": "well_cogo",
-                    "language": {
-                        "code": "en"
+                "type": "interactive",
+                "interactive": {
+                    "type": "button",
+                    "body": {
+                        "text": "WelCome To CogoportBot ,Our aim to Simplify your logistics and shipments by booking FCL containers, LCL, Air cargo and customs clearance services online. Track your shipments end to end. Are you insterested about the products"
                     },
-                    "components": [
-                      {
-                          "type": "header",
-                          "parameters": [
-                              {
-                                   "type" : "image",
-                                   "image": {
-                                   "link": "https://assets-global.website-files.com/5e557f57e065e822f0adb45d/623d6ed319d020b76d111564_team-meet.jpg"}
-                              } 
-                          ]
-                      }
-                    ]
+                    "action": {
+                        "buttons": [
+                            {
+                                "type": "reply",
+                                "reply": {
+                                    "id": "yes_well",
+                                    "title": "Yes"
+                                }
+                            },
+                            {
+                                "type": "reply",
+                                "reply": {
+                                    "id": "no_well",
+                                    "title": "No"
+                                }
+                            }
+                        ]
+                    }
                 }
             },
             headers: {
@@ -105,7 +111,7 @@ app.post("/webhook", (req, res) => {
                 type: "text",
                 "text": {
                     "preview_url": false,
-                    "body": "i am not able to understand."+msg_body
+                    "body": "i am not able to understand. "+msg_body
                 }
             },
             headers: {
