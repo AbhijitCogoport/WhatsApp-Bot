@@ -53,10 +53,10 @@ app.post("/webhook", (req, res) => {
       let phon_no_id =
         body_param.entry[0].changes[0].value.metadata.phone_number_id;
       let from = body_param.entry[0].changes[0].value.messages[0].from;
-      let msg_body="none";
-      if(body_param.entry[0].changes[0].value.messages[0]){
+      let msg_body='none';
+      if(body_param.entry[0].changes[0].value.messages[0].text.body){
          msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
-     }
+      }
       
       console.log("phone number " + phon_no_id);
       console.log("from " + from);
@@ -120,7 +120,7 @@ app.post("/webhook", (req, res) => {
                 type: "text",
                 "text": {
                     "preview_url": false,
-                    "body": "i am not able to understand ."+msg_body
+                    "body": "i am not able to understand."
                 }
             },
             headers: {
