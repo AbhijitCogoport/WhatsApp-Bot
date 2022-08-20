@@ -40,7 +40,7 @@ app.post("/webhook", (req, res) => {
 
   let body_param = req.body;
 
-  //console.log("out side working " ,JSON.stringify(body_param,null,2));
+  console.log("user data" ,JSON.stringify(body_param,null,2));
 
   if (body_param?.object) {
     console.log("inside body param");
@@ -50,8 +50,7 @@ app.post("/webhook", (req, res) => {
       body_param.entry[0].changes[0].value.messages
     ) {
       console.log("deep layer");
-      let phon_no_id =
-        body_param.entry[0].changes[0].value.metadata.phone_number_id;
+      let phon_no_id =body_param.entry[0].changes[0].value.metadata.phone_number_id;
       let from = body_param.entry[0].changes[0].value.messages[0].from;
       let msg_body='none';
       if(body_param.entry[0].changes[0].value.messages[0]){
@@ -66,10 +65,7 @@ app.post("/webhook", (req, res) => {
         axios({
           method: "POST",
           url:
-            "https://graph.facebook.com/v13.0/" +
-            phon_no_id +
-            "/messages?access_token=" +
-            token,
+            "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
             data: {
                 messaging_product: "whatsapp",
                 recipient_type: "individual",
@@ -109,7 +105,7 @@ app.post("/webhook", (req, res) => {
                 type: "text",
                 "text": {
                     "preview_url": false,
-                    "body": "i am not able to understand."
+                    "body": "i am not able to understand."+msg_body
                 }
             },
             headers: {
