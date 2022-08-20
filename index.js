@@ -137,13 +137,13 @@ app.post("/webhook", (req, res) => {
                             "type": "list",
                             "header": {
                                 "type": "text",
-                                "text": "<HEADER_TEXT>"
+                                "text": "CogoportBot"
                             },
                             "body": {
-                                "text": "<BODY_TEXT>"
+                                "text": "Select one"
                             },
                             "footer": {
-                                "text": "<FOOTER_TEXT>"
+                                "text": "Menu"
                             },
                             "action": {
                                 "button": "<BUTTON_TEXT>",
