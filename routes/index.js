@@ -1,5 +1,10 @@
 'use strict';
-const router = require('express').Router();
+// const app = require('express').app();
+const express=require("express");
+const body_parser=require("body-parser");
+const app=express().use(body_parser.json());
+
+
 
 const WhatsappCloudAPI = require('whatsappcloudapi_wrapper');
 
@@ -12,15 +17,40 @@ const Whatsapp = new WhatsappCloudAPI({
 const EcommerceStore = require('../utils/ecommerce_store.js');
 let Store = new EcommerceStore();
 const CustomerSession = new Map();
+console.log(Whatsapp)
+console.log(Store)
 
-router.get('/webhook', (req, res) => {
+ 
+
+// app.get("/webhook",(req,res)=>{
+//     let mode=req.query["hub.mode"];
+//     let challange=req.query["hub.challenge"];
+//     let token=req.query["hub.verify_token"];
+ 
+//     console.log('going')
+//     console.log(mode,challange,token);
+//     console.log(req);
+ 
+//      if(mode && token){
+//         console.log('working')
+//          if(mode==="subscribe" &&  process.env.Meta_WA_VerifyToken === token){
+//              res.status(200).send(challange);
+//          }else{
+//              res.status(403);
+//          }
+ 
+//      }
+ 
+//  });
+
+app.get('/webhook', (req, res) => {
     try {
         console.log('GET: Someone is pinging me!');
 
         let mode = req.query['hub.mode'];
         let token = req.query['hub.verify_token'];
         let challenge = req.query['hub.challenge'];
-
+        console.log(mode,token,challenge);
         if (
             mode &&
             token &&
@@ -37,7 +67,7 @@ router.get('/webhook', (req, res) => {
     }
 });
 
-router.post('/webhook', async (req, res) => {
+app.post('/webhook', async (req, res) => {
     console.log('POST: Someone is pinging me!');
     try {
         let data = Whatsapp.parseMessage(req.body);
@@ -354,4 +384,4 @@ router.post('/webhook', async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = app;
