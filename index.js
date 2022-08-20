@@ -35,7 +35,7 @@ app.post("/webhook",(req,res)=>{ //i want some
 
     let body_param=req.body;
 
-    console.log("out side working " ,JSON.stringify(body_param,null,2));
+    //console.log("out side working " ,JSON.stringify(body_param,null,2));
 
     if(body_param?.object){
         console.log("inside body param");
