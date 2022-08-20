@@ -72,11 +72,36 @@ app.post("/webhook", (req, res) => {
             to: from,
             type: "template",
             template: {
-                "name": "hello_world",
-                "language": {
-                    "code": "en_US"
-                }
-            },
+                name: "wellcome_cogo",
+                language: {
+                    code: "en"
+                },
+                components: [
+                    {
+                        type: "header",
+                        parameters: [
+                            {
+                                type: "image",
+                                image: {
+                                    link: "https://assets-global.website-files.com/5e557f57e065e822f0adb45d/5f0c0b23f9fd064b3d30fd5b_cogoport-logo-black.svg"
+                                }
+                            }
+                        ],
+                    },
+                    {
+                        type: "body",
+                        parameters: [
+
+                            {
+                                type: "text",
+                                text: " Wellcome to Cogoport,we help importers and exporters grow their businesses internationally by making trade simpler, effortless and affordable using technology"
+                            },
+                            
+                        ],
+                        
+                    }
+                ]
+            }
           },
           headers: {
             "Content-Type": "application/json",
