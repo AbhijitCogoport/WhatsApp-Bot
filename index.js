@@ -137,60 +137,44 @@ app.post("/webhook", (req, res) => {
                             "type": "list",
                             "header": {
                                 "type": "text",
-                                "text": "Cogoport"
+                                "text": "<HEADER_TEXT>"
                             },
                             "body": {
-                                "text": "Selectone of the services"
+                                "text": "<BODY_TEXT>"
                             },
                             "footer": {
-                                "text": " cogoportBot"
+                                "text": "<FOOTER_TEXT>"
                             },
                             "action": {
-                                "button": "Menu",
+                                "button": "<BUTTON_TEXT>",
                                 "sections": [
                                     {
-                                        "title": "Products",
+                                        "title": "<LIST_SECTION_1_TITLE>",
                                         "rows": [
                                             {
-                                                "id": "search-freight_rates",
-                                                "title": "Search Freight Rates",
-                                                "description": "Freight charges & air cargo prices at your finger tips"
+                                                "id": "<LIST_SECTION_1_ROW_1_ID>",
+                                                "title": "<SECTION_1_ROW_1_TITLE>",
+                                                "description": "<SECTION_1_ROW_1_DESC>"
                                             },
                                             {
-                                                "id": "book_shipping_containers",
-                                                "title": " Book Shipping Containers",
-                                                "description": "Booking Shipping Containers Now"
-                                            },
-                                            {
-                                                "id": "book_air_shipments",
-                                                "title": "Book Air Shipments",
-                                                "description": "Booking air shipments Now"
-                                            },
-                                            {
-                                                "id": "track_containers",
-                                                "title": " Track Containers",
-                                                "description": "Track Containers Now"
+                                                "id": "<LIST_SECTION_1_ROW_2_ID>",
+                                                "title": "<SECTION_1_ROW_2_TITLE>",
+                                                "description": "<SECTION_1_ROW_2_DESC>"
                                             }
-
                                         ]
                                     },
                                     {
-                                        "title": "Services",
+                                        "title": "<LIST_SECTION_2_TITLE>",
                                         "rows": [
                                             {
-                                                "id": "fcl_freight",
-                                                "title": "FCL Freight",
-                                                "description": "Talk to an FCL Expert"
+                                                "id": "<LIST_SECTION_2_ROW_1_ID>",
+                                                "title": "<SECTION_2_ROW_1_TITLE>",
+                                                "description": "<SECTION_2_ROW_1_DESC>"
                                             },
                                             {
-                                                "id": "lcl_freight",
-                                                "title": "LCL Freight",
-                                                "description": "Talk to an LCL Expert"
-                                            },
-                                            {
-                                                "id": "air_cargo",
-                                                "title": "Air Cargo",
-                                                "description": "Talk to an Expert"
+                                                "id": "<LIST_SECTION_2_ROW_2_ID>",
+                                                "title": "<SECTION_2_ROW_2_TITLE>",
+                                                "description": "<SECTION_2_ROW_2_DESC>"
                                             }
                                         ]
                                     }
