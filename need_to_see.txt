@@ -105,3 +105,80 @@ type: "template",
                       }
                     ]
                 }
+
+
+
+
+                 data: {
+                        messaging_product: "whatsapp",
+                        recipient_type: "individual",
+                        to: from,
+                        context: {
+                            "message_id": msg_id
+                        },
+                        type: "interactive",
+                        "interactive": {
+                            "type": "list",
+                            "header": {
+                                "type": "text",
+                                "text": "Cogoport"
+                            },
+                            "body": {
+                                "text": "Selectone of the services"
+                            },
+                            "footer": {
+                                "text": " cogoportBot"
+                            },
+                            "action": {
+                                "button": "Menu",
+                                "sections": [
+                                    {
+                                        "title": "Products",
+                                        "rows": [
+                                            {
+                                                "id": "search-freight_rates",
+                                                "title": "Search Freight Rates",
+                                                "description": "Freight charges & air cargo prices at your finger tips"
+                                            },
+                                            {
+                                                "id": "book_shipping_containers",
+                                                "title": " Book Shipping Containers",
+                                                "description": "Booking Shipping Containers Now"
+                                            },
+                                            {
+                                                "id": "book_air_shipments",
+                                                "title": "Book Air Shipments",
+                                                "description": "Booking air shipments Now"
+                                            },
+                                            {
+                                                "id": "track_containers",
+                                                "title": " Track Containers",
+                                                "description": "Track Containers Now"
+                                            }
+
+                                        ]
+                                    },
+                                    {
+                                        "title": "Services",
+                                        "rows": [
+                                            {
+                                                "id": "fcl_freight",
+                                                "title": "FCL Freight",
+                                                "description": "Talk to an FCL Expert"
+                                            },
+                                            {
+                                                "id": "lcl_freight",
+                                                "title": "LCL Freight",
+                                                "description": "Talk to an LCL Expert"
+                                            },
+                                            {
+                                                "id": "air_cargo",
+                                                "title": "Air Cargo",
+                                                "description": "Talk to an Expert"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                },
