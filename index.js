@@ -153,7 +153,7 @@ app.post("/webhook", (req, res) => {
                                         "title": "Products",
                                         "rows": [
                                             {
-                                                "id": "search-freight_rates",
+                                                "id": "search_freight_rates",
                                                 "title": "Search Freight Rates",
                                                 "description": "Freight charges & air cargo prices at your finger tips"    
                                             },
@@ -225,6 +225,145 @@ app.post("/webhook", (req, res) => {
         }
         if(msg_btn==="list_reply") {
             console.log(JSON.stringify(body_param.entry[0].changes[0].value.messages,null,2));
+            let list_btn_id= body_param.entry[0].changes[0].value.messages[0].interactive.list_reply.id;
+            if(list_btn_id==="search_freight_rates"){
+                axios({
+                    method: "POST",
+                    url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
+                    data: {
+                        messaging_product: "whatsapp",
+                        recipient_type: "individual",
+                        to: from,
+                        context: {
+                            "message_id": msg_id
+                        },
+                        type: "text",
+                        "text": {
+                            "preview_url": false,
+                            "body": "search_freight_rates "  + msg_id
+                        }
+                    },
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                });
+            }
+            if(list_btn_id==="book_shipping_containers"){
+                axios({
+                    method: "POST",
+                    url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
+                    data: {
+                        messaging_product: "whatsapp",
+                        recipient_type: "individual",
+                        to: from,
+                        context: {
+                            "message_id": msg_id
+                        },
+                        type: "text",
+                        "text": {
+                            "preview_url": false,
+                            "body": "book_shipping_containers" + msg_id 
+                        }
+                    },
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                });
+
+            }
+            if(list_btn_id==="book_air_shipments"){
+                axios({
+                    method: "POST",
+                    url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
+                    data: {
+                        messaging_product: "whatsapp",
+                        recipient_type: "individual",
+                        to: from,
+                        context: {
+                            "message_id": msg_id
+                        },
+                        type: "text",
+                        "text": {
+                            "preview_url": false,
+                            "body": "book_air_shipments" + msg_id  
+                        }
+                    },
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                });
+
+            }
+            if(list_btn_id==="track_containers"){
+                axios({
+                    method: "POST",
+                    url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
+                    data: {
+                        messaging_product: "whatsapp",
+                        recipient_type: "individual",
+                        to: from,
+                        context: {
+                            "message_id": msg_id
+                        },
+                        type: "text",
+                        "text": {
+                            "preview_url": false,
+                            "body": " track_containers" + msg_id  
+                        }
+                    },
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                });
+
+            }
+            if(list_btn_id==="fcl_freight"){
+                axios({
+                    method: "POST",
+                    url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
+                    data: {
+                        messaging_product: "whatsapp",
+                        recipient_type: "individual",
+                        to: from,
+                        context: {
+                            "message_id": msg_id
+                        },
+                        type: "text",
+                        "text": {
+                            "preview_url": false,
+                            "body": " fcl_freight" + msg_id
+                        }
+                    },
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                });
+
+            }
+            if(list_btn_id==="lcl_freight"){
+                axios({
+                    method: "POST",
+                    url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
+                    data: {
+                        messaging_product: "whatsapp",
+                        recipient_type: "individual",
+                        to: from,
+                        context: {
+                            "message_id": msg_id
+                        },
+                        type: "text",
+                        "text": {
+                            "preview_url": false,
+                            "body": " lcl_freight" + msg_id 
+                        }
+                    },
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                });
+
+            }
+
         }
       }
       res.sendStatus(200);
