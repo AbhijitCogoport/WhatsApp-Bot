@@ -1,12 +1,19 @@
 const express=require("express");
 const body_parser=require("body-parser");
+
 const axios=require("axios");
 require('dotenv').config();
+const WhatsappCloudAPI = require('whatsappcloudapi_wrapper');
 
 const app=express().use(body_parser.json());
 
 const token=process.env.TOKEN;
 const mytoken=process.env.MYTOKEN;//prasath_token
+const Whatsapp = new WhatsappCloudAPI({
+    accessToken: 'EAAQ9Mp7CZCi4BAEBbAz6ZBlPSad0uGMFrZByTiZC9ZBQsZAX2ZCqFdj9ppQOJ71nOZBrUOrGZBFDxNvk5YMtQVUQOkijpKiZAN0LwO4DB5473BHZCos67xH372yZCPOXzMj3TZBmkYjCc9DlH6SFPgZAlN1XvzgkIAEcZC32wB3pZAIfHoRy4veRTDVhNNsNRkEMcUFVlbE07xaBzFTOZAQZDZD',
+    senderPhoneNumberId: '106849635477090',
+    WABA_ID: '103555699146921',
+});
 
 app.listen(process.env.PORT,()=>{
     console.log("webhook is listening");
@@ -51,7 +58,6 @@ app.post("/webhook",(req,res)=>{ //i want some
                console.log("phone number "+phon_no_id);
                console.log("from "+from);
                console.log("boady param "+msg_body);
-               let setall=phon_no_id+from;
 
                axios({
                    method:"POST",
@@ -60,7 +66,7 @@ app.post("/webhook",(req,res)=>{ //i want some
                        messaging_product:"whatsapp",
                        to:from,
                        text:{
-                           body:"Hi.. I'm Prasath, your message is "+msg_body+setall
+                           body:"Hi.. I'm Prasath, your message is "+msg_body 
                        }
                    },
                    headers:{
@@ -70,6 +76,10 @@ app.post("/webhook",(req,res)=>{ //i want some
                });
 
                res.sendStatus(200);
+            await Whatsapp.sendText({
+                message: 'Hello world',
+                recipientPhone: 'your recipient phone number here',
+            });
             }else{
                 res.sendStatus(404);
             }
