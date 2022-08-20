@@ -152,9 +152,9 @@ app.post("/webhook", (req, res) => {
                                         "title": "Products",
                                         "rows": [
                                             {
-                                                "id": "<LIST_SECTION_1_ROW_1_ID>",
-                                                "title": "<SECTION_1_ROW_1_TITLE>",
-                                                "description": "<SECTION_1_ROW_1_DESC>"
+                                                "id": "search-freight_rates",
+                                                "title": "Search Freight Rates",
+                                                "description": "Freight charges & air cargo prices at your finger tips"    
                                             },
                                             {
                                                 "id": "<LIST_SECTION_1_ROW_2_ID>",
