@@ -117,7 +117,6 @@ app.post("/webhook", (req, res) => {
         }
       }
       if(reply_type==='interactive'){
-        console.log(body_param.entry[0].changes[0].value.messages);
 
         let msg_btn = body_param.entry[0].changes[0].value.messages[0].interactive.type;
         if(msg_btn==="button_reply"){
@@ -223,7 +222,10 @@ app.post("/webhook", (req, res) => {
                     },
                 });
             } 
-        } 
+        }
+        if(msg_btn==="list_reply") {
+            console.log(JSON.stringify(body_param.entry[0].changes[0].value.messages,null,2));
+        }
       }
       res.sendStatus(200);
     } else {
