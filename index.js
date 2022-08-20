@@ -127,7 +127,11 @@ app.post("/webhook", (req, res) => {
                     url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
                     data: {
                         messaging_product: "whatsapp",
+                        recipient_type: "individual",
                         to: from,
+                        context: {
+                            "message_id": msg_id
+                        },
                         type: "text",
                         "text": {
                             "preview_url": false,
