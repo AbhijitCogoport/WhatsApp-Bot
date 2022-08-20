@@ -65,6 +65,7 @@ app.post("/webhook", (req, res) => {
           url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
           data: {
             messaging_product: "whatsapp",
+            recipient_type: "individual",
             to: from,
             type: "template",
             template: {
