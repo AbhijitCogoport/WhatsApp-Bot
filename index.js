@@ -90,18 +90,7 @@ app.post("/webhook", (req, res) => {
                                    "link": "https://assets-global.website-files.com/5e557f57e065e822f0adb45d/623d6ed319d020b76d111564_team-meet.jpg"}
                               } 
                           ]
-                      },
-                      {   
-                          "type":"body",
-                          "parameters": [
-                              {
-                              "type" : "text",
-                              "text" : "thisis for checking"
-                          }
-                          ]
-  
                       }
-          
                     ]
                 }
             },
