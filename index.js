@@ -177,14 +177,14 @@ app.post("/webhook", (req, res) => {
                                         "title": "Services",
                                         "rows": [
                                             {
-                                                "id": "<LIST_SECTION_2_ROW_1_ID>",
-                                                "title": "<SECTION_2_ROW_1_TITLE>",
-                                                "description": "<SECTION_2_ROW_1_DESC>"
+                                                "id": "fcl_freight",
+                                                "title": "FCL Freight",
+                                                "description": "Talk to an FCL Expert"
                                             },
                                             {
-                                                "id": "<LIST_SECTION_2_ROW_2_ID>",
-                                                "title": "<SECTION_2_ROW_2_TITLE>",
-                                                "description": "<SECTION_2_ROW_2_DESC>"
+                                                "id": "lcl_freight",
+                                                "title": "LCL Freight",
+                                                "description": "Talk to an LCL Expert"
                                             }
                                         ]
                                     }
