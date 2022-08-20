@@ -76,7 +76,7 @@ app.post("/webhook",(req,res)=>{ //i want some
                });
 
                res.sendStatus(200);
-            await Whatsapp.sendText({
+             Whatsapp.sendText({
                 message: 'Hello world',
                 recipientPhone: 'your recipient phone number here',
             });
