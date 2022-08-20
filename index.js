@@ -40,7 +40,7 @@ app.post("/webhook", (req, res) => {
 
   let body_param = req.body;
 
-  console.log("user data" ,JSON.stringify(body_param,null,2));
+//   console.log("user data" ,JSON.stringify(body_param,null,2));
 
   if (body_param?.object) {
     // console.log("inside body param");
@@ -122,6 +122,7 @@ app.post("/webhook", (req, res) => {
         if(msg_btn==="button_reply"){
             let msg_btn_id= body_param.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
             if(msg_btn_id==="yes_well"){
+
                 axios({
                     method: "POST",
                     url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
@@ -192,10 +193,13 @@ app.post("/webhook", (req, res) => {
                             }
                         }
                     },
+
                     headers: {
                       "Content-Type": "application/json",
                     },
                 });
+                console.log("user data" ,JSON.stringify(body_param,null,2));
+
             }
             if(msg_btn_id==="no_well"){
                 axios({
