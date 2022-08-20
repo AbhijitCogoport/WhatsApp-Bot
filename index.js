@@ -52,7 +52,7 @@ app.post("/webhook", (req, res) => {
     //   console.log("deep layer");
       let phon_no_id =body_param.entry[0].changes[0].value.metadata.phone_number_id;
       let from = body_param.entry[0].changes[0].value.messages[0].from;
-      let mess_id=body_param.entry[0].changes[0].value.messages[0].id;
+      let msg_id=body_param.entry[0].changes[0].value.messages[0].id;
       let reply_type= body_param.entry[0].changes[0].value.messages[0].type;
       if(reply_type==='text'){
         // this is for wellcome message 
@@ -131,7 +131,7 @@ app.post("/webhook", (req, res) => {
                         type: "text",
                         "text": {
                             "preview_url": false,
-                            "body": "i am not able to understand fack . " + msg_btn_id
+                            "body": "i am not able to understand fack . " + msg_id
                         }
                     },
                     headers: {
@@ -149,7 +149,7 @@ app.post("/webhook", (req, res) => {
                         type: "text",
                         "text": {
                             "preview_url": false,
-                            "body": " sorry for distrubing . " + msg_btn_id
+                            "body": " sorry for distrubing . " +   msg_id
                         }
                     },
                     headers: {
