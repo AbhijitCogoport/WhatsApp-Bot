@@ -84,50 +84,50 @@ app.post("/webhook", (req, res) => {
         });
       }
       else{
-        // axios({
-        //     method: "POST",
-        //     url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
-        //     data: {
-        //       messaging_product: "whatsapp",
-        //       recipient_type: "individual",
-        //       to: from,
-        //       type: "template",
-        //       template: {
-        //           name: "wellcome_cogo",
-        //           language: {
-        //               code: "en_US"
-        //           },
-        //           components: [
-        //               {
-        //                   type: "header",
-        //                   parameters: [
-        //                       {
-        //                           type: "image",
-        //                           image: {
-        //                               link: "https://assets-global.website-files.com/5e557f57e065e822f0adb45d/5f0c0b23f9fd064b3d30fd5b_cogoport-logo-black.svg"
-        //                           }
-        //                       }
-        //                   ],
-        //               },
-        //               {
-        //                   type: "body",
-        //                   parameters: [
+        axios({
+            method: "POST",
+            url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
+            data: {
+              messaging_product: "whatsapp",
+              recipient_type: "individual",
+              to: from,
+              type: "template",
+              "template": {
+                  "name": "wellcome_cogo",
+                  "language": {
+                      "code": "en_US"
+                  },
+                  "components": [
+                      {
+                          "type": "header",
+                          "parameters": [
+                              {
+                                  "type": "image",
+                                  "image": {
+                                      "link": "https://assets-global.website-files.com/5e557f57e065e822f0adb45d/5f0c0b23f9fd064b3d30fd5b_cogoport-logo-black.svg"
+                                  }
+                              }
+                          ],
+                      },
+                      {
+                          "type": "body",
+                          "parameters": [
   
-        //                       {
-        //                           type: "text",
-        //                           text: " Wellcome to Cogoport,we help importers and exporters grow their businesses internationally by making trade simpler, effortless and affordable using technology"
-        //                       },
+                              {
+                                  "type": "text",
+                                  "text": " Wellcome to Cogoport,we help importers and exporters grow their businesses internationally by making trade simpler, effortless and affordable using technology"
+                              },
                               
-        //                   ],
+                          ],
                           
-        //               }
-        //           ]
-        //       }
-        //     },
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //     },
-        //   });
+                      }
+                  ]
+              }
+            },
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
       }
 
       res.sendStatus(200);
