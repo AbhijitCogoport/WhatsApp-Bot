@@ -58,7 +58,8 @@ app.post("/webhook", (req, res) => {
       console.log("phone number " + phon_no_id);
       console.log("from " + from);
       console.log("boady param " + msg_body);
-      if (msg_body === "hi") {
+      msg_body=msg_body.toLowerCase();
+      if (msg_body === "hi" || msg_body === "hello" || msg_body.includes("hi") || msg_body.includes("hello")){
         axios({
           method: "POST",
           url:
