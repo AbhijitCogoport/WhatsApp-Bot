@@ -40,32 +40,27 @@ app.post("/webhook", (req, res) => {
 
   let body_param = req.body;
 
-  console.log("user data" ,JSON.stringify(body_param,null,2));
+//   console.log("user data" ,JSON.stringify(body_param,null,2));
 
   if (body_param?.object) {
     console.log("inside body param");
     if (
-      body_param?.entry &&
-      body_param.entry[0].changes &&
-      body_param.entry[0].changes[0].value.messages
+      body_param.entry &&
+      body_param.entry[0]?.changes &&
+      body_param.entry[0]?.changes[0]?.value.messages
     ) {
       console.log("deep layer");
       let phon_no_id =body_param.entry[0].changes[0].value.metadata.phone_number_id;
       let from = body_param.entry[0].changes[0].value.messages[0].from;
-      let msg_body='none';
-      if(body_param.entry[0].changes[0].value.messages[0]){
-         msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
-      }
-      
-      console.log("phone number " + phon_no_id);
-      console.log("from " + from);
-      console.log("boady param " + msg_body);
-      msg_body=msg_body.toLowerCase();
-      if (msg_body === "hi" || msg_body === "hello" || msg_body.includes("hi") || msg_body.includes("hello")){
+      let mess_id=body_param.entry[0].changes[0].value.messages[0].id;
+      let reply_type= body_param.entry[0].changes[0].value.messages[0].type;
+      if(reply_type==='text'){
+        let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
+        msg_body=msg_body.toLowerCase();
+        if (msg_body === "hi" || msg_body === "hello" || msg_body.includes("hi") || msg_body.includes("hello")){
         axios({
           method: "POST",
-          url:
-            "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
+          url:"https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
             data: {
                 messaging_product: "whatsapp",
                 recipient_type: "individual",
@@ -74,7 +69,7 @@ app.post("/webhook", (req, res) => {
                 "interactive": {
                     "type": "button",
                     "body": {
-                        "text": "WelCome To CogoportBot ,Our aim to Simplify your logistics and shipments by booking FCL containers, LCL, Air cargo and customs clearance services online. Track your shipments end to end. Are you insterested about the products"
+                        "text": "WelCome To CogoportBot ,Our aim to Simplify your logistics and shipments by booking FCL containers, LCL, Air cargo and customs clearance services online. Track your shipments end to end. Are you insterested about the products ?"
                     },
                     "action": {
                         "buttons": [
@@ -100,8 +95,8 @@ app.post("/webhook", (req, res) => {
             "Content-Type": "application/json",
             },
         });
-      }
-      else{
+        }
+        else{
         axios({
             method: "POST",
             url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
@@ -118,7 +113,27 @@ app.post("/webhook", (req, res) => {
               "Content-Type": "application/json",
             },
           });
+        }
       }
+      if(reply_type==='interactive'){
+        axios({
+            method: "POST",
+            url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
+            data: {
+                messaging_product: "whatsapp",
+                to: from,
+                type: "text",
+                "text": {
+                    "preview_url": false,
+                    "body": "i am not able to understand fack . "+msg_body
+                }
+            },
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+      }
+      
 
       res.sendStatus(200);
     } else {
