@@ -70,8 +70,12 @@ app.post("/webhook", (req, res) => {
           data: {
             messaging_product: "whatsapp",
             to: from,
-            text: {
-              body: "Hi.. I'm Prasath, your message is " + msg_body,
+            type: "template",
+            template: {
+                "name": "hello_world",
+                "language": {
+                    "code": "en_US"
+                }
             },
           },
           headers: {
