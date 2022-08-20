@@ -159,7 +159,7 @@ app.post("/webhook", (req, res) => {
                                             {
                                                 "id": "book_shipping_containers",
                                                 "title": "Book Shipping Containers",
-                                                "description": "<SECTION_1_ROW_2_DESC>"
+                                                "description": "Booking Shipping Containers Now"
                                             }
                                         ]
                                     },
