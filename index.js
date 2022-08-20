@@ -121,8 +121,8 @@ app.post("/webhook", (req, res) => {
         let msg_btn = body_param.entry[0].changes[0].value.messages[0].interactive.type;
         if(msg_btn==="button_reply"){
             let msg_btn_id= body_param.entry[0].changes[0].value.messages[0].interactive.button_reply.id;
+            console.log(msg_btn_id);
             if(msg_btn_id==="yes_well"){
-
                 axios({
                     method: "POST",
                     url: "https://graph.facebook.com/v13.0/" +phon_no_id +"/messages?access_token=" +token,
@@ -198,7 +198,6 @@ app.post("/webhook", (req, res) => {
                       "Content-Type": "application/json",
                     },
                 });
-                console.log("user data" ,JSON.stringify(body_param,null,2));
 
             }
             if(msg_btn_id==="no_well"){
@@ -215,7 +214,7 @@ app.post("/webhook", (req, res) => {
                         type: "text",
                         "text": {
                             "preview_url": false,
-                            "body": " sorry for distrubing . " +   msg_id
+                            "body": " sorry for distrubing .if you insterested about the com. say here Hi. "  
                         }
                     },
                     headers: {
